@@ -1,7 +1,14 @@
+import 'package:e_commerce_/core/app/env.variables.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  // Singelton
+  await EnvVariables.instance.init(envType: EnvTypeEnum.dev);
+  // To make your app stands up only
+  await SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp],
+  ).then((value) => runApp(const MyApp()));
 }
 
 class MyApp extends StatelessWidget {

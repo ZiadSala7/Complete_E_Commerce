@@ -3,6 +3,7 @@ import 'package:e_commerce_/core/app/env.variables.dart';
 import 'package:e_commerce_/core/common/screens/no_network_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   // Singelton
@@ -23,19 +24,23 @@ class MyApp extends StatelessWidget {
       valueListenable: ConnectivityController.instance.checkConnection,
       builder: (_, value, __) {
         if (value) {
-          return MaterialApp(
-            title: 'Flutter Demo',
-            theme: ThemeData(),
-            builder: (context, widget) {
-              return Scaffold(
-                body: Builder(
-                  builder: (context) {
-                    ConnectivityController.instance.init();
-                    return const Center(child: Text('Hello'));
-                  },
-                ),
-              );
-            },
+          return ScreenUtilInit(
+            designSize: const Size(375, 812),
+            minTextAdapt: true,
+            child: MaterialApp(
+              title: 'Flutter Demo',
+              theme: ThemeData(),
+              builder: (context, widget) {
+                return Scaffold(
+                  body: Builder(
+                    builder: (context) {
+                      ConnectivityController.instance.init();
+                      return const Center(child: Text('Hello'));
+                    },
+                  ),
+                );
+              },
+            ),
           );
         } else {
           return MaterialApp(

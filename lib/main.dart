@@ -1,6 +1,7 @@
 import 'package:e_commerce_/core/app/connectivity_controller.dart';
 import 'package:e_commerce_/core/app/env.variables.dart';
 import 'package:e_commerce_/core/common/screens/no_network_screen.dart';
+import 'package:e_commerce_/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,6 +41,8 @@ class MyApp extends StatelessWidget {
                   ),
                 );
               },
+              // onGenerateRoute: AppRoutes.onGenerateRoute,
+              // initialRoute: ,
             ),
           );
         } else {

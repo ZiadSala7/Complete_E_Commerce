@@ -1,6 +1,7 @@
 import 'package:e_commerce_/core/app/connectivity_controller.dart';
 import 'package:e_commerce_/core/app/env.variables.dart';
 import 'package:e_commerce_/core/common/screens/no_network_screen.dart';
+import 'package:e_commerce_/core/language/app_localizations_setup.dart';
 import 'package:e_commerce_/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -30,14 +31,24 @@ class MyApp extends StatelessWidget {
             minTextAdapt: true,
             child: MaterialApp(
               title: 'Flutter Demo',
+              locale: const Locale('en'),
+              localizationsDelegates:
+                  AppLocalizationsSetup.localizationsDelegates,
+              localeListResolutionCallback:
+                  AppLocalizationsSetup.localeResolutionCallback,
               theme: ThemeData(),
               builder: (context, widget) {
-                return Scaffold(
-                  body: Builder(
-                    builder: (context) {
-                      ConnectivityController.instance.init();
-                      return const Center(child: Text('Hello'));
-                    },
+                return GestureDetector(
+                  onTap: () {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  },
+                  child: Scaffold(
+                    body: Builder(
+                      builder: (context) {
+                        ConnectivityController.instance.init();
+                        return const Center(child: Text('Hello'));
+                      },
+                    ),
                   ),
                 );
               },

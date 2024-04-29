@@ -34,9 +34,9 @@ class MyApp extends StatelessWidget {
               locale: const Locale('en'),
               localizationsDelegates:
                   AppLocalizationsSetup.localizationsDelegates,
+              supportedLocales: AppLocalizationsSetup.supportedLocales,
               // localeListResolutionCallback:
               //     AppLocalizationsSetup.localeResolutionCallback,
-              supportedLocales: AppLocalizationsSetup.supportedLocales,
               theme: ThemeData(),
               builder: (context, widget) {
                 return GestureDetector(

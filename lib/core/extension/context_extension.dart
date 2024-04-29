@@ -7,6 +7,8 @@ extension ContextExt on BuildContext {
   MyColors get color => Theme.of(this).extension<MyColors>()!;
   // Images
   MyAssets get image => Theme.of(this).extension<MyAssets>()!;
+  //
+  TextStyle? get textStyle => Theme.of(this).textTheme.displaySmall;
   Future<dynamic> pushNamed(String routeName, Object? obj) {
     return Navigator.of(this).pushNamed(routeName, arguments: obj);
   }
